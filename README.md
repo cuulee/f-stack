@@ -108,11 +108,11 @@ Main code of F-Stack is BSD licensed.
 
 #### DPDK
 
-BSD, Copyright(c) 2010-2014 Intel Corporation.
+BSD, Copyright(c) 2010-2017 Intel Corporation.
 
 #### FreeBSD
 
-BSD, Copyright 2006 John-Mark Gurney.
+BSD, Copyright 1992-2016 The FreeBSD Project.
 
 #### Nginx
 
@@ -120,7 +120,10 @@ BSD, Copyright (C) 2002-2017 Igor Sysoev. Copyright (C) 2011-2017 Nginx, Inc.
 
 #### Redis
 
-BSD,  Copyright (c) 2006-2010, Salvatore Sanfilippo <antirez at gmail dot com>
+BSD,  Copyright (c) 2006-2015, Salvatore Sanfilippo.
+
+#### inih(a simple .INI file parser)
+BSD, Copyright (c) 2009.
 
 #### Microthread framework
 
