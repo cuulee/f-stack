@@ -19,9 +19,9 @@ F-Stack is an open source network framework with high performance based on DPDK.
 
 After several months of development and testing, dkdns-DPDK DNS parser based on  DPDK officially released in October 2013. DNS processing performance of single 10GE port was up to 11 million QPS The DNS processing performance of double 10GE net export reached 18.2 million QPS. Our newly independently developed TCP/IP protocol stack, F-Stack, can process 0.6 million RPS with single 10GE port.
 
- With the fast growth of Tencent Cloud, more and more business needs higher network access performance. At the meanwhile F-Stack is continuous improving driven by the business growth, and ultimately developed into a general network access framework. For the TCP/IP protocol stack part, we've tried several different plans and finally determine to transplant and simplify the FreeBSD protocol stack to the user space. Therefor we can the reduce cost of maintenance and quickly follow up the new application of the protocol stack.
+ With the fast growth of Tencent Cloud, more and more services needs higher network access performance. At the meanwhile F-Stack is continuous improving driven by the business growth, and ultimately developed into a general network access framework. For the TCP/IP protocol stack part, we've tried several different plans and finally determine to transplant and simplify the FreeBSD protocol stack to the user space. Therefor we can the reduce cost of maintenance and quickly follow up the new application of the protocol stack.
 
-With rapid development of all kinds of application, in order to help different APPs quick and easily use F-Stack, F-Stack has integrated Nginx, Redis and other commonly used APP, and a micro thread framework (SPP), and provides a standard Epoll/Keque interface.
+With rapid development of all kinds of application, in order to help different APPs quick and easily use F-Stack, F-Stack has integrated Nginx, Redis and other commonly used APP, and a micro thread framework, and provides a standard Epoll/Kqueue interface.
 
 Currently, besides authorized DNS server of DNSPod, there are various product in Tencent Cloud has used the F-Stack, such as HttpDNS (D+), COS access module, CDN access module, etc..
 
@@ -29,7 +29,7 @@ Currently, besides authorized DNS server of DNSPod, there are various product in
 
     #clone F-Stack
     mkdir /data/f-stack
-	git clone https://github.com/F-Stack/f-stack.git /data/f-stack
+    git clone https://github.com/F-Stack/f-stack.git /data/f-stack
     
     cd f-stack
     # compile DPDK
@@ -37,56 +37,56 @@ Currently, besides authorized DNS server of DNSPod, there are various product in
     ./dpdk-setup.sh # compile with x86_64-native-linuxapp-gcc
     
     # Set hugepage
-  	# single-node system
-	echo 1024 > /sys/kernel/mm/hugepages/hugepages-2048kB/nr_hugepages
+    # single-node system
+    echo 1024 > /sys/kernel/mm/hugepages/hugepages-2048kB/nr_hugepages
 
-	# or NUMA
-	echo 1024 > /sys/devices/system/node/node0/hugepages/hugepages-2048kB/nr_hugepages
-	echo 1024 > /sys/devices/system/node/node1/hugepages/hugepages-2048kB/nr_hugepages
+    # or NUMA
+    echo 1024 > /sys/devices/system/node/node0/hugepages/hugepages-2048kB/nr_hugepages
+    echo 1024 > /sys/devices/system/node/node1/hugepages/hugepages-2048kB/nr_hugepages
 	
-	# Using Hugepage with the DPDK
-	mkdir /mnt/huge
-	mount -t hugetlbfs nodev /mnt/huge
+    # Using Hugepage with the DPDK
+    mkdir /mnt/huge
+    mount -t hugetlbfs nodev /mnt/huge
 	
-	# offload NIC
+    # offload NIC
     modprobe uio
     insmod /data/f-stack/dpdk/x86_64-native-linuxapp-gcc/build/kmod/igb_uio.ko
     insmod /data/f-stack/dpdk/x86_64-native-linuxapp-gcc/build/kmod/rte_kni.ko
-	python dpdk-devbind.py --status
+    python dpdk-devbind.py --status
     ifconfig eth0 down
-	python dpdk-devbind.py --bind=igb_uio eth0 # assuming that use 10GE NIC and eth0
+    python dpdk-devbind.py --bind=igb_uio eth0 # assuming that use 10GE NIC and eth0
 	
-	# Compile F-Stack
-	cd ../../lib/
-	make
-	export FF_PATH=/data/f-stack
-	export FF_DPDK=/data/f-stack/dpdk/x86_64-native-linuxapp-gcc/lib
+    # Compile F-Stack
+    cd ../../lib/
+    make
+    export FF_PATH=/data/f-stack
+    export FF_DPDK=/data/f-stack/dpdk/x86_64-native-linuxapp-gcc/lib
 
 #### Nginx
 
-	cd app/nginx-1.11.10
-	./configure --prefix=/usr/local/nginx_fstack --with-ff_module
-	make
-	make install
-	cd ../..
-	./start.sh -b /usr/local/nginx_fstack/sbin/nginx -c config.ini
+    cd app/nginx-1.11.10
+    ./configure --prefix=/usr/local/nginx_fstack --with-ff_module
+    make
+    make install
+    cd ../..
+    ./start.sh -b /usr/local/nginx_fstack/sbin/nginx -c config.ini
 
 #### Redis
 
-	cd app/redis-3.2.8/
-	make
-	make install
+    cd app/redis-3.2.8/
+    make
+    make install
 
 
 ## Nginx Testing Result 
 
 Test environment
 
-	NIC:Intel Corporation Ethernet Controller XL710 for 40GbE QSFP+
+    NIC:Intel Corporation Ethernet Controller XL710 for 40GbE QSFP+
     CPU:Intel(R) Xeon(R) CPU E5-2670 v3 @ 2.30GHz
-	Memory：128G
-	OS:CentOS Linux release 7.2 (Final)
-	Kernel：3.10.104-1-tlinux2-0041.tl2
+    Memory：128G
+    OS:CentOS Linux release 7.2 (Final)
+    Kernel：3.10.104-1-tlinux2-0041.tl2
 
 Nginx uses linux kernel's default config, all soft interrupts are working in the first CPU core.
 
