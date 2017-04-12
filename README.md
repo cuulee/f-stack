@@ -1,5 +1,7 @@
-# README
+# F-Stack
+![](F-Stack.png)
 
+## Introduction
 With the rapid development of NIC, the poor performance of data packets processing with Linux kernel has become the bottleneck. However the rapid development of the Internet needs high performance of network processing, kernel bypass has caught more and more attention. There are various similar technologies appear, such as DPDK, NETMAP and PF_RING. The main idea of kernel bypass is that Linux is only used to deal with control flow, all data streams are processed in user space. Therefore kernel bypass can avoid performance bottlenecks caused by kernel packet copy, thread scheduling, system calls and interrupt. Further more, kernel bypass can achieve higher performance with multi optimizing methods.  Within various techniques, DPDK has been widely used because of its more thorough isolation from kernel scheduling and active community support.
 
 F-Stack is an open source network framework with high performance based on DPDK. With follow characteristics
@@ -11,7 +13,7 @@ F-Stack is an open source network framework with high performance based on DPDK.
 5. Provide micro thread interface. Various applications with stateful app can easily use F-Stack to get high performance without processing complex asynchronous logic.
 6. Provide Epoll/Kqueue interface that allow many kinds of applications easily use F-Stack
 
-## F-Stack History
+## History
 
  In order to deal with the increasingly severe DDoS attacks, authorized DNS server of Tencent Cloud DNSPod switched from Gigabit Ethernet to 10-Gigabit at the end of 2012. We faced several options, one is to continue to use the original model another is to use kernel bypass technology. After several rounds of investigation, we finally chose to develop our next generation of DNS server based on DPDK . The reason is DPDK providing  ultra high performance, and can be seamlessly extended to 40G, or even 100G NIC in the future. 
 
@@ -47,7 +49,7 @@ Currently, besides authorized DNS server of DNSPod, there are various product in
 	mount -t hugetlbfs nodev /mnt/huge
 	
 	# offload NIC
-    modprobe uio.ko
+    modprobe uio
     insmod /data/f-stack/dpdk/x86_64-native-linuxapp-gcc/build/kmod/igb_uio.ko
     insmod /data/f-stack/dpdk/x86_64-native-linuxapp-gcc/build/kmod/rte_kni.ko
 	python dpdk-devbind.py --status
