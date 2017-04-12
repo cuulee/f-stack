@@ -47,7 +47,7 @@ char html[] =
 "<h1>Welcome to F-Stack!</h1>\r\n"
 "\r\n"
 "<p>For online documentation and support please refer to\r\n"
-"<a href=\"http://F-Stack.com/\">F-Stack.com</a>.<br/>\r\n"
+"<a href=\"http://F-Stack.org/\">F-Stack.org</a>.<br/>\r\n"
 "\r\n"
 "<p><em>Thank you for using F-Stack.</em></p>\r\n"
 "</body>\r\n"
