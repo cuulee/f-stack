@@ -17,7 +17,7 @@
     mount -t hugetlbfs nodev /mnt/huge
 
     # insmod ko
-    modprobe uio.ko
+    modprobe uio
     insmod build/kmod/igb_uio.ko
     insmod build/kmod/rte_kni.ko
 
