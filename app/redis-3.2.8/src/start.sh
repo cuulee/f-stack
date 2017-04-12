@@ -9,7 +9,7 @@ function usage() {
     exit
 }
 
-conf=../../../config.ini
+conf=./config.ini
 bin=./redis-server
 
 while getopts "c:b:h" args
