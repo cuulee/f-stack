@@ -6,7 +6,7 @@ With the rapid development of NIC, the poor performance of data packets processi
 
 F-Stack is an open source network framework with high performance based on DPDK. With follow characteristics
 
-1. Ultra high network performance which can achieve network card under full load, 10 million concurrent connection, five million RPS, 1 million CPS.
+1. Ultra high network performance which can achieve network card under full load, 10 million concurrent connection, 5 million RPS, 1 million CPS.
 2. Transplant FreeBSD 11.01 user space stack, provides a complete stack function, cut a great amount of irrelevant features. Therefore greatly enhance the performance.
 3. Support Nginx, Redis and other mature applications, service can easily use F-Stack
 4. With Multi-process architecture, easy to extend
@@ -17,9 +17,9 @@ F-Stack is an open source network framework with high performance based on DPDK.
 
  In order to deal with the increasingly severe DDoS attacks, authorized DNS server of Tencent Cloud DNSPod switched from Gigabit Ethernet to 10-Gigabit at the end of 2012. We faced several options, one is to continue to use the original model another is to use kernel bypass technology. After several rounds of investigation, we finally chose to develop our next generation of DNS server based on DPDK . The reason is DPDK providing  ultra high performance, and can be seamlessly extended to 40G, or even 100G NIC in the future. 
 
-After several months of development and testing, dkdns-DPDK DNS parser based on  DPDK officially released in October 2013. DNS processing performance of single 10GE port was up to 11 million QPS The DNS processing performance of double 10GE net export reached 18.2 million QPS. Our newly independently developed TCP/IP protocol stack, F-Stack, can process 0.6 million RPS with single 10GE port.
+After several months of development and testing, DKDNS parser based on DPDK officially released in October 2013. DNS processing performance of single 10GE port was up to 11 million QPS. The DNS processing performance of double 10GE net export reached 18.2 million QPS. Our newly independently developed TCP/IP protocol stack, F-Stack, can process 0.6 million RPS with single 10GE port.
 
- With the fast growth of Tencent Cloud, more and more services needs higher network access performance. At the meanwhile F-Stack is continuous improving driven by the business growth, and ultimately developed into a general network access framework. For the TCP/IP protocol stack part, we've tried several different plans and finally determine to transplant and simplify the FreeBSD protocol stack to the user space. Therefor we can the reduce cost of maintenance and quickly follow up the new application of the protocol stack.
+ With the fast growth of Tencent Cloud, more and more services needs higher network access performance. At the meanwhile F-Stack is continuous improving driven by the business growth, and ultimately developed into a general network access framework. For the TCP/IP protocol stack part, we've tried several different plans and finally determine to transplant and simplify the FreeBSD protocol stack to the user space. Therefor we can reduce the cost of maintenance and quickly follow up the new application of the protocol stack.
 
 With rapid development of all kinds of application, in order to help different APPs quick and easily use F-Stack, F-Stack has integrated Nginx, Redis and other commonly used APP, and a micro thread framework, and provides a standard Epoll/Kqueue interface.
 
