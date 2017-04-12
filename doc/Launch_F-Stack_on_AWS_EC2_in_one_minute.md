@@ -1,4 +1,4 @@
-# Deploy F-Stack on AWS EC2 in one minute
+# Launch F-Stack on AWS EC2 in one minute
 
   If you have a Redhat7.3 EC2 instance，and then execute the following cmds, you will get the F-Stack server in one minute 
 
