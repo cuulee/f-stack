@@ -46,8 +46,7 @@
 void *
 ff_mmap(void *addr, uint64_t len, int prot, int flags, int fd, uint64_t offset)
 {
-    return rte_malloc("", len, 4096);
-/*
+    //return rte_malloc("", len, 4096);
     int host_prot;
     int host_flags;
 
@@ -68,31 +67,30 @@ ff_mmap(void *addr, uint64_t len, int prot, int flags, int fd, uint64_t offset)
         exit(1);
     }
     return ret;
-*/
 }
 
 int
 ff_munmap(void *addr, uint64_t len)
 {
-    rte_free(addr);
-    return 0;
-    //return (munmap(addr, len));
+    //rte_free(addr);
+    //return 0;
+    return (munmap(addr, len));
 }
 
 
 void *
 ff_malloc(uint64_t size)
 {
-    return rte_malloc("", size, 0);
-    //return (malloc(size));
+    //return rte_malloc("", size, 0);
+    return (malloc(size));
 }
 
 
 void *
 ff_calloc(uint64_t number, uint64_t size)
 {
-    return rte_calloc("", number, size, 0);
-    //return (calloc(number, size));
+    //return rte_calloc("", number, size, 0);
+    return (calloc(number, size));
 }
 
 
@@ -100,8 +98,8 @@ void *
 ff_realloc(void *p, uint64_t size)
 {
     if (size) {
-        return rte_realloc(p, size, 0);
-        //return (realloc(p, size));
+        //return rte_realloc(p, size, 0);
+        return (realloc(p, size));
     }
 
     return (p);
@@ -111,8 +109,8 @@ ff_realloc(void *p, uint64_t size)
 void
 ff_free(void *p)
 {
-    rte_free(p);
-    //free(p);
+    //rte_free(p);
+    free(p);
 }
 
 void panic(const char *, ...) __attribute__((__noreturn__));
