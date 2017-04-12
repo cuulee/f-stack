@@ -7,6 +7,7 @@
     git clone https://github.com/F-Stack/f-stack.git /data/f-stack
 
     # Compile DPDK
+    cd /data/f-stack/dpdk
     make config T=x86_64-native-linuxapp-gcc
     make
 
@@ -17,8 +18,8 @@
 
     # insmod ko
     modprobe uio.ko
-    insmod x86_64-native-linuxapp-gcc/build/kmod/igb_uio.ko
-    insmod x86_64-native-linuxapp-gcc/build/kmod/rte_kni.ko
+    insmod build/kmod/igb_uio.ko
+    insmod build/kmod/rte_kni.ko
 
     # set ip address
     export myaddr=`ifconfig eth0 | grep "inet" | grep -v ":" | awk -F ' '  '{print $2}'`
@@ -39,7 +40,7 @@
 
     # Compile F-Stack lib
     export FF_PATH=/data/f-stack
-    export FF_DPDK=/data/f-stack/dpdk/x86_64-native-linuxapp-gcc/lib
+    export FF_DPDK=/data/f-stack/dpdk/build
     cd /data/f-stack/lib
     make
 
@@ -59,5 +60,5 @@
 
     # start kni
     sleep 30
-    ifconfig veth0 ${myip}  netmask ${mymask}  broadcast ${mybc} hw ether ${myhw}
+    ifconfig veth0 ${myaddr}  netmask ${mymask}  broadcast ${mybc} hw ether ${myhw}
     route add -net 0.0.0.0 gw ${mygw} dev veth0
