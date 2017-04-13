@@ -116,10 +116,10 @@ BSD, Copyright(c) 2010-2017 Intel Corporation.
 
 BSD, Copyright 1992-2016 The FreeBSD Project.
 
-#### libuinet
+#### [Libuinet](https://github.com/pkelsey/libuinet)
 BSD, Copyright (c) 2015 Patrick Kelsey.
 
-#### libplebnet
+#### Libplebnet
 BSD, Copyright (c) 2011 Kip Macy.
 
 #### Nginx
