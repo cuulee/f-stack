@@ -1,4 +1,6 @@
 /*
+ * Copyright (c) 1998 Michael Smith. All rights reserved.
+ * Copyright (c) 2013 Patrick Kelsey. All rights reserved.
  * Copyright (C) 2017 THL A29 Limited, a Tencent company.
  * All rights reserved.
  *
@@ -22,6 +24,13 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
+ * Derived from libuinet's uinet_kern_environment.c.
+ */
+ 
+/*
+ * This is an override of ken_environment.c so that get/set/put/unsetenv()
+ * from libc will be used, and the extended kernel environment API will
+ * still be available.
  */
 
 #include <sys/cdefs.h>

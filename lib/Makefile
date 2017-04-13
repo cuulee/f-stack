@@ -1,3 +1,5 @@
+# 
+# Derived in part from libuinet's Makefile.
 #
 # Derived from FreeBSD auto-generated kernel Makefile and
 # machine-specific Makefile templates

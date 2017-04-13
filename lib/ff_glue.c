@@ -1,4 +1,5 @@
 /*
+ * Copyright (c) 2011 Kip Macy. All rights reserved.
  * Copyright (C) 2017 THL A29 Limited, a Tencent company.
  * All rights reserved.
  *
@@ -22,6 +23,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
+ * Derived in part from libplebnet's pn_glue.c.
  */
 
 #include <sys/cdefs.h>

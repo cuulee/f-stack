@@ -1,4 +1,5 @@
 /*
+ * Copyright (c) 2010 Kip Macy All rights reserved.
  * Copyright (C) 2017 THL A29 Limited, a Tencent company.
  * All rights reserved.
  *

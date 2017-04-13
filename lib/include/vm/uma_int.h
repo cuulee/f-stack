@@ -1,4 +1,5 @@
 /*
+ * Copyright (c) 2010 Kip Macy All rights reserved.
  * Copyright (C) 2017 THL A29 Limited, a Tencent company.
  * All rights reserved.
  *
@@ -23,6 +24,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  */
+
 
 #ifndef _FSTACK_VM_UMA_INT_H_
 #define _FSTACK_VM_UMA_INT_H_
